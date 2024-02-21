@@ -1,3 +1,10 @@
+@font-face { font-family: Heorot; src: url('./fonts/Heorot-4rLK.ttf'); } 
+@font-face { font-family: Heorot; font-style: italic; src: url('./fonts/HeorotItalic-WMOA.ttf'); }
+@font-face { font-family: Airstrike; src: url('./fonts/AIRSTRIKE.TTF'); }
+@font-face { font-family: Airstrike; font-style: condensed; src: url('./fonts/AIRSTRIKECOND.TTF'); }
+@font-face { font-family: Profont; src: url('./fonts/Profontwindows.ttf'); }
+@font-face { font-family: Profont; font-weight: bold; src: url('./fonts/ProfontwindowsBold.ttf'); }
+
 html {
     font-family: Arial, Helvetica, sans-serif;
     font-size: large;
@@ -5,15 +12,25 @@ html {
 
 body {
     background-color: black;
+    overflow: hidden;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 button {
-    width: 500px;
-    font-size: 25px;
+    width: 250px;
+    font-family: Profont;
+    font-size: 30px;
     background-color: black;
-    color: greenyellow;
-    border-radius: 25%;
-    border-bottom: 3px solid yellowgreen;
+    color: rgb(173, 255, 47);
+    border-bottom: 0;
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -21,15 +38,23 @@ button {
 
 button:hover {
     cursor: grab;
+    border-bottom: 3px solid rgb(173, 255, 47);
 }
 
 button:active {
     cursor: grabbing;
+    color: rgb(190, 255, 170);
+    border-bottom: 3px solid rgb(190, 255, 170);
+    text-shadow: 0px 0px 5px rgb(190, 255, 170);
 }
 
 #buttonContainer {
     display: flex;
     justify-content: center;
+    position: absolute;
+    top: 50px;
+    left: 45%;
+    right: 45%;
 }
 
 footer {
@@ -41,7 +66,11 @@ footer {
 
 #diceNumber {
     color: white;
-    font-size: 55px;
+    font-family: Heorot;
+    font-size: 100px;
+    text-shadow: 0px 0px 5px rgb(173, 255, 47);
+    margin: 0;
+    padding: 0;
 }
 
 #dice {
@@ -50,5 +79,124 @@ footer {
     position:absolute;
     top: 40%;
     text-align: center;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+#rollingText {
+    color: white;
+    font-family: Airstrike; font-style: condensed;
+    font-size: 60px;
+    margin: 0;
+    animation-name: generating;
+    top: 20%;
+    animation-duration: 2500ms;
+    animation-iteration-count: infinite;
+}
+
+#wireframeContainer {
+    width: 100vw;
+    height: 50vh;
+    position:absolute;
+    top: 23%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wireframeStatic {
+    height: 470px;
+    z-index: 0;
+    animation-name: wireframeStaticAnim;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+#wireframeAnim {
+    height: 470px;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+#wizard {
+    font-size: 11px;
+    text-align: right;
+    animation-name: quoteAppear;
+    animation-duration: 12s;
+    animation-iteration-count: 1;
+    margin-top: 0;
+    margin-right: 8px;
+}
+
+#quoteText {
+    max-width: 800px;
+    text-align: right;
+    font-size: 20px;
+    font-family: Profont;
+    animation-name: quoteAppear;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+    margin-bottom: 0;
+}
+
+/* Animations */
+
+@keyframes generating {
+    0% {
+        opacity: 0.25;
+    }
+    25% {
+        opacity: 0.75;
+    }
+    50% {
+        opacity: 0.25;
+    }
+    75% {
+        opacity: 0.75;
+    }
+    100% {
+        opacity: 0.25;
+    }
+}
+
+@keyframes quoteAppear {
+    0% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@keyframes wireframeStaticAnim {
+    0% {
+        opacity: 0.4;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+/* Small Window Settings */
+
+@media only screen and (max-width: 600px) {
+    #quoteText {
+        max-width: 400px;
+        font-size: 17px;
+    }
+
 
 }
